@@ -1,52 +1,6 @@
 const usersService = require('../services/usersService');
 const jwtMiddleware = require('../middlewares/jwtMiddleware');
 
-// 회원가입
-exports.postUsers = async function (req,res) {
-    const {
-        user_id,
-        password,
-        name,
-        phone_number,
-        relationship,
-        patient_name,
-        birth_date,
-        sex,
-        dementia_registration,
-        medication
-    } = req.body;
-    const signUpResponse = await usersService.createUser(
-        user_id,
-        password,
-        name,
-        phone_number,
-        relationship,
-        patient_name,
-        birth_date,
-        sex,
-        dementia_registration,
-        medication
-      );
-      if (signUpResponse == "성공") {
-        return res.status(200).send(`
-        <script>
-          if (confirm('회원가입에 성공했습니다.')) {
-            window.location.href = "/";
-          }
-        </script>
-      `)
-      }
-      else {
-        return res.send(`
-        <script>
-          if (confirm('회원가입에 실패했습니다. 회원가입 정보를 다시 한 번 확인해주세요.')) {
-            window.location.href = "/users/signup";
-          }
-
-        </script>
-      `);
-      }
-};
 
 // 로그인
 exports.login = async function (req, res) {
