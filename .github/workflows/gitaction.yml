@@ -43,5 +43,5 @@ jobs:
         script: |
           cd /home/ubuntu/minddiary                # VM에서 클론된 프로젝트 디렉토리
           git pull origin main                     # 최신 코드 가져오기
-          kubectl apply -f deployment.yaml         # 쿠버네티스 배포
-          kubectl rollout status deployment/minddiary
+          kubectl apply -f deployment.yml          # 쿠버네티스 배포
+          kubectl rollout status deployment.yml
