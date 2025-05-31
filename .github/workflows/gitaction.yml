@@ -44,5 +44,4 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
-        kubectl set image deployment/minddiary minddiary=mjkang4416/mind-diary:latest
-        kubectl rollout status deployment/minddiary
+        kubectl apply -f deployment.yaml
